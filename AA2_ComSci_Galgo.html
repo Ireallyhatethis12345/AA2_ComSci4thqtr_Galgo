@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+    <title>AA2 ComSci Galgo</title>
+
+    <style>
+        #name, #nname, #password, #email{
+            width: 400px;
+            height: 15px;
+            padding: 10px;
+            border: 3px solid skyblue;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        #male, #female, #Nomention{
+            width: 20px;
+            border: 3px solid skyblue;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            margin-right: 5px;
+        }
+
+        #gender{
+            margin-bottom: 5px;
+            width: 175px;
+            border: 3px solid skyblue;
+            border-radius: 5px;
+        }
+
+
+        #address{
+            width: 600px;
+            height: 35px;
+            padding: 10px;
+            border: 3px solid skyblue;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        
+        #interests{
+            width: 750px;
+            height: 45px;
+            padding: 10px;
+            border: 3px solid skyblue;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        input[type="submit"], input[type="reset"] {
+        background-color: lightgreen;
+        padding: 10px;
+        border: 3px solid green;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      fieldset{
+        padding-left: 20px;
+        margin-bottom: 20px;
+        width: 700px;
+      }
+    </style>
+    </head>
+    <body>
+        <form onsubmit="return outputs()">
+            <fieldset>
+                <legend>Learning Website Sign-up Sheet:</legend>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="Name" onblur="borderc(this)" required><br>
+    
+                <label for="nickname">Nickname:</label><br>
+                <input type="text" id="nname" name="Nickname" onblur="borderc(this)" required><br>
+    
+                <p id="gendertext">Select your own gender:</p>
+                <select name="gender" id="gender", onblur="borderc(this)">
+                <option value="">Select Option</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Nomention">Prefer Not to Mention</option>
+                </select><br>
+    
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="Password" onblur="borderc(this)" required><br>
+    
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="Email" onblur="borderc(this)" required><br>
+    
+                <label for="address">Address:</label><br>
+                <textarea id="address" name="Address" rows="3" onblur="borderc(this)" required></textarea><br>
+    
+                <label for="interests">Interests:</label><br>
+                <textarea id="interests" name="Interests" rows="4" onblur="borderc(this)" required></textarea><br>
+            </fieldset>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset" onclick="return resetfunc()"> 
+        </form>
+    
+        <div id="output">
+            <p id="iname"></p>
+            <p id="inname"></p>
+            <p id="igendertext"></p>
+            <p id="ipassword"></p>
+            <p id="iemail"></p>
+            <p id="iaddress"></p>
+            <p id="iinterests"></p>
+        </div>
+    
+        <script>
+            function outputs() {
+                let disname = document.getElementById("name").value;
+                document.getElementById("iname").innerHTML = "Name: " + disname;
+    
+                let disnname = document.getElementById("nname").value;
+                document.getElementById("inname").innerHTML = "Username: " + disnname;
+    
+                let gender = document.getElementsByName("gender");
+                let x = "";
+                for (let i = 0; i < gender.length; i++) {
+                    if (gender[i].checked) {
+                        x = gender[i].value;
+                        break;
+                    }
+                }
+                document.getElementById("igendertext").innerHTML = "Gender: " + x;
+    
+                let dispassword = document.getElementById("password").value;
+                document.getElementById("ipassword").innerHTML = "Password: " + dispassword;
+    
+                let disemail = document.getElementById("email").value;
+                document.getElementById("iemail").innerHTML = "Email: " + disemail;
+    
+                let disaddress = document.getElementById("address").value;
+                document.getElementById("iaddress").innerHTML = "Address: " + disaddress;
+    
+                let disinterests = document.getElementById("interests").value;
+                document.getElementById("iinterests").innerHTML = "Interests: " + disinterests;
+    
+                return false;
+            }
+    
+            function borderc(inputElement) {
+                if (inputElement.value == "") {
+                    inputElement.style.borderColor = "red";
+                } else {
+                    inputElement.style.borderColor = "green";
+                }
+            }
+    
+            function resetfunc() {
+               document.getElementById("name").style.borderColor = "skyblue";
+               document.getElementById("nname").style.borderColor = "skyblue";
+               document.getElementById("password").style.borderColor = "skyblue";
+               document.getElementById("email").style.borderColor = "skyblue";
+               document.getElementById("address").style.borderColor = "skyblue";
+               document.getElementById("interests").style.borderColor = "skyblue";
+               document.getElementById("gender").style.borderColor = "skyblue";
+
+               document.getElementById("iname").innerHTML = "";
+               document.getElementById("inname").innerHTML = "";
+               document.getElementById("igendertext").innerHTML = "";
+               document.getElementById("ipassword").innerHTML = "";
+               document.getElementById("iemail").innerHTML = "";
+               document.getElementById("iaddress").innerHTML = "";
+               document.getElementById("iinterests").innerHTML = "";
+            }
+        </script>
+    </body>
+ 
+</html>
